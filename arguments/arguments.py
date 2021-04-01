@@ -100,10 +100,11 @@ def checkURL():
 
 def manageArguments(allArguments):
     """
+    divide all options and merge the same options together
     """
     print("allArguments = {}".format(allArguments))
 
-    # find all methods used in request
+    # find all method arguments used in the request
     methods = []
 
     indices = [i for i, a in enumerate(allArguments) if (a == "-M" or a == "--method")]
@@ -111,5 +112,50 @@ def manageArguments(allArguments):
         methods.append(allArguments[index + 1])
 
     arguList["method"] = methods
-    print("arguList = {}".format(arguList))
 
+    # find all header arguments used in the request
+    headers = []
+
+    indices = [i for i, a in enumerate(allArguments) if (a == "-H" or a == "--headers")]
+    for index in indices:
+        headers.append(allArguments[index + 1])
+
+    arguList["headers"] = headers
+
+    # find all query arguments used in the request
+    queries = []
+
+    indices = [i for i, a in enumerate(allArguments) if (a == "-Q" or a == "--queries")]
+    for index in queries:
+        queries.append(allArguments[index + 1])
+
+    arguList["queries"] = queries
+
+    # find all data sections used in the request
+    data = []
+
+    indices = [i for i, a in enumerate(allArguments) if (a == "-D" or a == "--data")]
+    for index in data:
+        data.append(allArguments[index + 1])
+
+    arguList["data"] = data
+
+    # find all json sections used in the request
+    json = []
+
+    indices = [i for i, a in enumerate(allArguments) if (a == "--json")]
+    for index in json:
+        json.append(allArguments[index + 1])
+
+    arguList["json"] = json
+
+    # find all timeout sections used in the request
+    timeout = []
+
+    indices = [i for i, a in enumerate(allArguments) if (a == "--timeout")]
+    for index in timeout:
+        json.append(allArguments[index + 1])
+
+    arguList["timeout"] = timeout
+
+    print("arguList = {}".format(arguList))
