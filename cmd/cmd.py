@@ -11,12 +11,12 @@ def main():
     """
     check if the user starts the request or not
     """
-    the_string = input()
-    command, url = the_string.split()
+    inp = list(input().split())
+    command = inp[0]
 
     # check the command
     if command == "meh":
-        argu.arguMain()
+        argu.arguMain(inp)
     else:
         err.wrongCommand(command)
 
