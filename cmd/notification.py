@@ -10,3 +10,9 @@ def wrongCommand(command):
 def wrongURL():
     print("The URL is not correct.")
     exit()
+
+def warning(problem):
+    if problem == "timeout":
+        print("Warning! the last timeout will be set for your request.")
+    else:
+        pass

@@ -3,6 +3,7 @@ Created on Wed Mar 31 12:23:00 2020 (1400/1/11)
 @author: Bahar Kaviani
 """
 
+import timeout as time
 import sys
 sys.path.append("../cmd")
 import notification as notif
@@ -102,7 +103,7 @@ def manageArguments(allArguments):
     """
     divide all options and merge the same options together
     """
-    print("allArguments = {}".format(allArguments))
+    #print("allArguments = {}".format(allArguments))
 
     # find all method arguments used in the request
     methods = []
@@ -157,5 +158,7 @@ def manageArguments(allArguments):
         timeout.append(allArguments[index + 1])
 
     arguList["timeout"] = timeout
+
+    time.checkTimeoutArgu(arguList.get("timeout"))
 
     print("arguList = {}".format(arguList))
