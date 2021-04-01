@@ -126,7 +126,7 @@ def manageArguments(allArguments):
     queries = []
 
     indices = [i for i, a in enumerate(allArguments) if (a == "-Q" or a == "--queries")]
-    for index in queries:
+    for index in indices:
         queries.append(allArguments[index + 1])
 
     arguList["queries"] = queries
@@ -135,7 +135,7 @@ def manageArguments(allArguments):
     data = []
 
     indices = [i for i, a in enumerate(allArguments) if (a == "-D" or a == "--data")]
-    for index in data:
+    for index in indices:
         data.append(allArguments[index + 1])
 
     arguList["data"] = data
@@ -144,7 +144,7 @@ def manageArguments(allArguments):
     json = []
 
     indices = [i for i, a in enumerate(allArguments) if (a == "--json")]
-    for index in json:
+    for index in indices:
         json.append(allArguments[index + 1])
 
     arguList["json"] = json
@@ -153,8 +153,8 @@ def manageArguments(allArguments):
     timeout = []
 
     indices = [i for i, a in enumerate(allArguments) if (a == "--timeout")]
-    for index in timeout:
-        json.append(allArguments[index + 1])
+    for index in indices:
+        timeout.append(allArguments[index + 1])
 
     arguList["timeout"] = timeout
 
