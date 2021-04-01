@@ -11,7 +11,8 @@ def main():
     """
     check if the user starts the request or not
     """
-    command = input()
+    the_string = input()
+    command, url = the_string.split()
 
     # check the command
     if command == "meh":
