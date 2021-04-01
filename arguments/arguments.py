@@ -5,7 +5,7 @@ Created on Wed Mar 31 12:23:00 2020 (1400/1/11)
 
 import sys
 sys.path.append("../cmd")
-import error as err
+import notification as notif
 
 # URL parts
 URL = None
@@ -48,7 +48,7 @@ def checkURL():
         SCHEME, rest = URL.split("://")
     except ValueError:
         #print("the protocol of request isn't specified")
-        err.wrongURL()
+        notif.wrongURL()
 
     # check if url has user and pass or not
     try:
@@ -81,7 +81,7 @@ def checkURL():
             rest = ""
         else:
             #print("url has no path")
-            err.wrongURL()
+            notif.wrongURL()
 
 
     # check query and frag sections
