@@ -99,4 +99,17 @@ def checkURL():
     print("FRAG = {}".format(FRAG))
 
 def manageArguments(allArguments):
-    print(allArguments)
+    """
+    """
+    print("allArguments = {}".format(allArguments))
+
+    # find all methods used in request
+    methods = []
+
+    indices = [i for i, a in enumerate(allArguments) if (a == "-M" or a == "--method")]
+    for index in indices:
+        methods.append(allArguments[index + 1])
+
+    arguList["method"] = methods
+    print("arguList = {}".format(arguList))
+
