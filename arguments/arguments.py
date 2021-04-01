@@ -7,7 +7,6 @@ import sys
 sys.path.append("../cmd")
 import error as err
 
-### global variables
 # URL parts
 URL = None
 SCHEME = None
@@ -19,17 +18,24 @@ PATH = None
 QUERY = None
 FRAG = None
 
+# dictionary of arguments
+arguList = {}
+
 def arguMain(input):
     """
+    check the url and also manage the arguments
     """
+    global URL
 
     # set the URL
-    global URL
     URL = input[1]
 
     # check the URL form
     checkURL()
 
+    # collect the arguments
+    argumentsPart = input[2:]
+    manageArguments(argumentsPart)
 
 def checkURL():
     """
@@ -91,3 +97,6 @@ def checkURL():
     print("PATH = {}".format(PATH))
     print("QUERY = {}".format(QUERY))
     print("FRAG = {}".format(FRAG))
+
+def manageArguments(allArguments):
+    print(allArguments)
