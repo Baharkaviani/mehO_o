@@ -15,6 +15,10 @@ def wrongMethod():
     print("The method is not valid.")
     exit()
 
+def connectionTimeout(url):
+    print(f"Connection to {url} timed out.")
+    exit()
+
 def warning(problem):
     if problem == "timeout":
         print("Warning! the last timeout will be set for your request.")

@@ -10,6 +10,7 @@ sys.path.append("../arguments")
 import notification as notif
 import arguments as argu
 import method as methodFile
+import timeout as timeoutFile
 
 def send():
     """
@@ -18,17 +19,25 @@ def send():
 
     # step 1: prepare the message to send
 
-
     # step 2: identify the method and send the request
+
     selectedMethod(methodFile.METHOD)
 
 def selectedMethod(method):
-    switcher = {
-        "GET": requests.get(argu.URL),
-        "POST": requests.post(argu.URL),
-        "PATCH": requests.patch(argu.URL),
-        "DELETE": requests.delete(argu.URL),
-        "PUT": requests.put(argu.URL)
-    }
-    x = switcher.get(method)
-    print(x.text)
+    try:
+        switcher = {
+            "GET": requests.get(argu.URL,
+                                timeout=timeoutFile.TIMEOUT),
+            "POST": requests.post(argu.URL,
+                                timeout=timeoutFile.TIMEOUT),
+            "PATCH": requests.patch(argu.URL,
+                                timeout=timeoutFile.TIMEOUT),
+            "DELETE": requests.delete(argu.URL,
+                                timeout=timeoutFile.TIMEOUT),
+            "PUT": requests.put(argu.URL,
+                                timeout=timeoutFile.TIMEOUT)
+        }
+        x = switcher.get(method)
+        print(x.text)
+    except requests.exceptions.Timeout:
+        notif.connectionTimeout(argu.URL)

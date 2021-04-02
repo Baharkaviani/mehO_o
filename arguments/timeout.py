@@ -6,7 +6,7 @@ import sys
 sys.path.append("../cmd")
 import notification as notif
 
-TIMEOUT = "infinity"
+TIMEOUT = None
 
 def checkTimeoutArgu(times):
     global TIMEOUT
@@ -14,9 +14,15 @@ def checkTimeoutArgu(times):
     if len(times) == 0:
         pass
     elif len(times) == 1:
-        TIMEOUT = times[0]
+        TIMEOUT = num(times[0])
     else:
         notif.warning("timeout")
-        TIMEOUT = times[len(times) - 1]
+        TIMEOUT = num(times[len(times) - 1])
 
     print("TIMEOUT = {}".format(TIMEOUT))
+
+def num(s):
+    try:
+        return int(s)
+    except ValueError:
+        return float(s)
