@@ -8,6 +8,7 @@ sys.path.append("../client")
 import arguments as argu
 import notification as notif
 import request
+import response
 
 def main():
     """
@@ -24,6 +25,9 @@ def main():
 
     # send the request
     request.selectedMethod()
+
+    # log the response
+    response.responseLog()
 
 
 if __name__ == '__main__':

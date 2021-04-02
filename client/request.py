@@ -16,11 +16,14 @@ import query as queryFile
 import data as dataFile
 import myJson as jsonFile
 
+RESPONSE = None
+
 def selectedMethod():
     """
     organize and send the request to server
     choose the correct action depend on method
     """
+    global RESPONSE
     method = methodFile.METHOD
 
     try:
@@ -42,11 +45,11 @@ def selectedMethod():
                                 timeout = timeoutFile.TIMEOUT),
             "PUT": requests.put(argu.URL,
                                 headers = headerFile.HEADER,
+                                data    = jsonFile.JSON,
                                 timeout = timeoutFile.TIMEOUT)
         }
 
-        x = switcher.get(method)
-        print(x.text)
+        RESPONSE = switcher.get(method)
 
     except requests.exceptions.Timeout:
         notif.connectionTimeout(argu.URL)
