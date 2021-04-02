@@ -35,17 +35,10 @@ def checkURL():
     """
     check whether the first argument is a correct url
     """
-    scheme = None
-    user = None
-    password = None
-    host = None
-    port = None
-    path = None
-    urlQuery = None
-    frag = None
     global URL
 
     # check the scheme
+    scheme = None
     try:
         scheme, rest = URL.split("://")
     except ValueError:
@@ -53,6 +46,8 @@ def checkURL():
         notif.wrongURL()
 
     # check if url has user and pass or not
+    user = None
+    password = None
     try:
         userPass, rest = rest.split('@')
         user, password = userPass.split(':')
@@ -61,6 +56,8 @@ def checkURL():
         pass
 
     # check if url has host and port section or not
+    host = None
+    port = None
     try:
         hostPort, rest = rest.split('/')
 
@@ -75,6 +72,7 @@ def checkURL():
         pass
 
     # check the path
+    path = None
     try:
         path, rest = rest.split('?')
     except ValueError:
@@ -85,20 +83,21 @@ def checkURL():
             #print("url has no path")
             notif.wrongURL()
 
-
     # check query and frag sections
+    urlQuery = None
+    frag = None
     try:
         urlQuery, frag = rest.split('#')
     except ValueError:
         if rest != "":
             urlQuery = rest
 
-    print("SCHEME = {}".format(scheme))
-    print("USER = {}, PASS = {}".format(user, password))
-    print("HOST = {}, PORT = {}".format(host, port))
-    print("PATH = {}".format(path))
-    print("QUERY = {}".format(urlQuery))
-    print("FRAG = {}".format(frag))
+    #print("SCHEME = {}".format(scheme))
+    #print("USER = {}, PASS = {}".format(user, password))
+    #print("HOST = {}, PORT = {}".format(host, port))
+    #print("PATH = {}".format(path))
+    #print("QUERY = {}".format(urlQuery))
+    #print("FRAG = {}".format(frag))
 
 def manageArguments(allArguments):
     """

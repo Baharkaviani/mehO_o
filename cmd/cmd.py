@@ -4,8 +4,10 @@ Created on Tue Mar 30 23:42:00 2020 (1400/1/10)
 """
 import sys
 sys.path.append("../arguments")
+sys.path.append("../client")
 import arguments as argu
 import notification as notif
+import request
 
 def main():
     """
@@ -19,6 +21,10 @@ def main():
         argu.arguMain(inp)
     else:
         notif.wrongCommand(command)
+
+    # send the request
+    request.send()
+
 
 if __name__ == '__main__':
     main()
