@@ -9,6 +9,7 @@ import notification as notif
 import timeout as timeFile
 import method as methodFile
 import header as headerFile
+import query as queryFile
 
 # URL parts
 URL = None
@@ -136,6 +137,8 @@ def manageArguments(allArguments):
         queries.append(allArguments[index + 1])
 
     arguList["queries"] = queries
+
+    queryFile.checkQueryArgu(arguList.get("queries"))
 
     # find all data sections used in the request
     data = []

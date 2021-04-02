@@ -12,6 +12,7 @@ import arguments as argu
 import method as methodFile
 import timeout as timeoutFile
 import header as headerFile
+import query as queryFile
 
 def selectedMethod():
     """
@@ -24,18 +25,23 @@ def selectedMethod():
         switcher = {
             "GET": requests.get(argu.URL,
                                 headers = headerFile.HEADER,
+                                params  = queryFile.QUERY,
                                 timeout = timeoutFile.TIMEOUT),
             "POST": requests.post(argu.URL,
                                 headers = headerFile.HEADER,
+                                params  = queryFile.QUERY,
                                 timeout = timeoutFile.TIMEOUT),
             "PATCH": requests.patch(argu.URL,
                                 headers = headerFile.HEADER,
+                                params  = queryFile.QUERY,
                                 timeout = timeoutFile.TIMEOUT),
             "DELETE": requests.delete(argu.URL,
                                 headers = headerFile.HEADER,
+                                params  = queryFile.QUERY,
                                 timeout = timeoutFile.TIMEOUT),
             "PUT": requests.put(argu.URL,
                                 headers = headerFile.HEADER,
+                                params  = queryFile.QUERY,
                                 timeout = timeoutFile.TIMEOUT)
         }
 
