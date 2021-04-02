@@ -24,5 +24,7 @@ def warning(problem):
         print("Warning! the last timeout will be set for your request.")
     if problem == "method":
         print("Warning! the last method will be set for your request.")
+    if problem == "header":
+        print("Warning! the last header will be set for your request.")
     else:
         pass

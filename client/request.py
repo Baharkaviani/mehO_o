@@ -39,7 +39,7 @@ def selectedMethod(method):
         }
 
         x = switcher.get(method)
-        print(x.text)
+        #print(x.text)
 
     except requests.exceptions.Timeout:
         notif.connectionTimeout(argu.URL)

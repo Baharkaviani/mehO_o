@@ -8,6 +8,7 @@ sys.path.append("../cmd")
 import notification as notif
 import timeout as timeFile
 import method as methodFile
+import header as headerFile
 
 # URL parts
 URL = None
@@ -124,6 +125,8 @@ def manageArguments(allArguments):
         headers.append(allArguments[index + 1])
 
     arguList["headers"] = headers
+
+    headerFile.checkHeaderArgu(arguList.get("headers"))
 
     # find all query arguments used in the request
     queries = []
