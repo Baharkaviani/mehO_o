@@ -11,6 +11,7 @@ import notification as notif
 import arguments as argu
 import method as methodFile
 import timeout as timeoutFile
+import header as headerFile
 
 def send():
     """
@@ -31,19 +32,24 @@ def selectedMethod(method):
     try:
         switcher = {
             "GET": requests.get(argu.URL,
-                                timeout=timeoutFile.TIMEOUT),
+                                headers = headerFile.HEADER,
+                                timeout = timeoutFile.TIMEOUT),
             "POST": requests.post(argu.URL,
-                                timeout=timeoutFile.TIMEOUT),
+                                headers = headerFile.HEADER,
+                                timeout = timeoutFile.TIMEOUT),
             "PATCH": requests.patch(argu.URL,
-                                timeout=timeoutFile.TIMEOUT),
+                                headers = headerFile.HEADER,
+                                timeout = timeoutFile.TIMEOUT),
             "DELETE": requests.delete(argu.URL,
-                                timeout=timeoutFile.TIMEOUT),
+                                headers = headerFile.HEADER,
+                                timeout = timeoutFile.TIMEOUT),
             "PUT": requests.put(argu.URL,
-                                timeout=timeoutFile.TIMEOUT)
+                                headers = headerFile.HEADER,
+                                timeout = timeoutFile.TIMEOUT)
         }
 
         x = switcher.get(method)
-        #print(x.text)
+        print(x.text)
 
     except requests.exceptions.Timeout:
         notif.connectionTimeout(argu.URL)
