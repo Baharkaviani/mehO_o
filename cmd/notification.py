@@ -26,3 +26,5 @@ def warning(problem):
         print("Warning! the last method will be set for your request.")
     if problem == "header":
         print("Warning! the last header will be set for your request.")
+    if problem == "priority data":
+        print("Warning! content-type header has higher priority than data argument.")

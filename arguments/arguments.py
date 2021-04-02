@@ -118,6 +118,24 @@ def manageArguments(allArguments):
 
     methodFile.checkMethodArgu(arguList.get("method"))
 
+    # find all data sections used in the request
+    data = []
+
+    indices = [i for i, a in enumerate(allArguments) if (a == "-D" or a == "--data")]
+    for index in indices:
+        data.append(allArguments[index + 1])
+
+    arguList["data"] = data
+
+    # find all json sections used in the request
+    json = []
+
+    indices = [i for i, a in enumerate(allArguments) if (a == "--json")]
+    for index in indices:
+        json.append(allArguments[index + 1])
+
+    arguList["json"] = json
+
     # find all header arguments used in the request
     headers = []
 
@@ -139,24 +157,6 @@ def manageArguments(allArguments):
     arguList["queries"] = queries
 
     queryFile.checkQueryArgu(arguList.get("queries"))
-
-    # find all data sections used in the request
-    data = []
-
-    indices = [i for i, a in enumerate(allArguments) if (a == "-D" or a == "--data")]
-    for index in indices:
-        data.append(allArguments[index + 1])
-
-    arguList["data"] = data
-
-    # find all json sections used in the request
-    json = []
-
-    indices = [i for i, a in enumerate(allArguments) if (a == "--json")]
-    for index in indices:
-        json.append(allArguments[index + 1])
-
-    arguList["json"] = json
 
     # find all timeout sections used in the request
     timeout = []

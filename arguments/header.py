@@ -5,7 +5,10 @@ Created on Fri Apr 2 16:44:00 2020 (1400/1/13)
 
 import sys
 sys.path.append("../cmd")
+sys.path.append("../arguments")
 import notification as notif
+import arguments as argu
+import data as dataFile
 
 HEADER = {}
 
@@ -32,6 +35,9 @@ def checkHeaderArgu(headers):
                 notif.warning("header")
 
             HEADER[key] = value
+
+    # check data
+    dataFile.checkDataArgu(argu.arguList.get("data"))
 
     # print the headers
     print("HEADERS = {}".format(HEADER))

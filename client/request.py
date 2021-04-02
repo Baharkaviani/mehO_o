@@ -13,6 +13,7 @@ import method as methodFile
 import timeout as timeoutFile
 import header as headerFile
 import query as queryFile
+import data as dataFile
 
 def selectedMethod():
     """
@@ -29,19 +30,16 @@ def selectedMethod():
                                 timeout = timeoutFile.TIMEOUT),
             "POST": requests.post(argu.URL,
                                 headers = headerFile.HEADER,
-                                params  = queryFile.QUERY,
+                                json    = dataFile.DATA,
                                 timeout = timeoutFile.TIMEOUT),
             "PATCH": requests.patch(argu.URL,
                                 headers = headerFile.HEADER,
-                                params  = queryFile.QUERY,
                                 timeout = timeoutFile.TIMEOUT),
             "DELETE": requests.delete(argu.URL,
                                 headers = headerFile.HEADER,
-                                params  = queryFile.QUERY,
                                 timeout = timeoutFile.TIMEOUT),
             "PUT": requests.put(argu.URL,
                                 headers = headerFile.HEADER,
-                                params  = queryFile.QUERY,
                                 timeout = timeoutFile.TIMEOUT)
         }
 
