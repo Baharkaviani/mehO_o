@@ -8,7 +8,6 @@ sys.path.append("../cmd")
 sys.path.append("../arguments")
 import notification as notif
 import arguments as argu
-import data as dataFile
 
 HEADER = {}
 
@@ -35,9 +34,6 @@ def checkHeaderArgu(headers):
                 notif.warning("header")
 
             HEADER[key] = value
-
-    # check data
-    dataFile.checkDataArgu(argu.arguList.get("data"))
 
     # print the headers
     print("HEADERS = {}".format(HEADER))

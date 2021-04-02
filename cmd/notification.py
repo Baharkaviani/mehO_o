@@ -19,6 +19,10 @@ def connectionTimeout(url):
     print(f"Connection to {url} timed out.")
     exit()
 
+def conflict():
+    print("Conflict of data and json headers.")
+    exit()
+
 def warning(problem):
     if problem == "timeout":
         print("Warning! the last timeout will be set for your request.")

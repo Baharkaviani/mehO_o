@@ -10,6 +10,8 @@ import timeout as timeFile
 import method as methodFile
 import header as headerFile
 import query as queryFile
+import data as dataFile
+import myJson as jsonFile
 
 # URL parts
 URL = None
@@ -107,7 +109,7 @@ def manageArguments(allArguments):
     """
     #print("allArguments = {}".format(allArguments))
 
-    # find all method arguments used in the request
+    ### find all method arguments used in the request
     methods = []
 
     indices = [i for i, a in enumerate(allArguments) if (a == "-M" or a == "--method")]
@@ -118,25 +120,7 @@ def manageArguments(allArguments):
 
     methodFile.checkMethodArgu(arguList.get("method"))
 
-    # find all data sections used in the request
-    data = []
-
-    indices = [i for i, a in enumerate(allArguments) if (a == "-D" or a == "--data")]
-    for index in indices:
-        data.append(allArguments[index + 1])
-
-    arguList["data"] = data
-
-    # find all json sections used in the request
-    json = []
-
-    indices = [i for i, a in enumerate(allArguments) if (a == "--json")]
-    for index in indices:
-        json.append(allArguments[index + 1])
-
-    arguList["json"] = json
-
-    # find all header arguments used in the request
+    ### find all header arguments used in the request
     headers = []
 
     indices = [i for i, a in enumerate(allArguments) if (a == "-H" or a == "--headers")]
@@ -147,7 +131,7 @@ def manageArguments(allArguments):
 
     headerFile.checkHeaderArgu(arguList.get("headers"))
 
-    # find all query arguments used in the request
+    ### find all query arguments used in the request
     queries = []
 
     indices = [i for i, a in enumerate(allArguments) if (a == "-Q" or a == "--queries")]
@@ -158,7 +142,34 @@ def manageArguments(allArguments):
 
     queryFile.checkQueryArgu(arguList.get("queries"))
 
-    # find all timeout sections used in the request
+    ### find all data sections used in the request
+    data = []
+
+    indices = [i for i, a in enumerate(allArguments) if (a == "-D" or a == "--data")]
+    for index in indices:
+        data.append(allArguments[index + 1])
+
+    arguList["data"] = data
+
+    # check data ==> "content-type":"application/x-www-form-urlencoded"
+    dataFile.checkDataArgu(arguList.get("data"))
+
+    ### find all json sections used in the request
+    json = []
+
+    indices = [i for i, a in enumerate(allArguments) if (a == "--json")]
+    for index in indices:
+        json.append(allArguments[index + 1])
+
+    arguList["json"] = json
+
+    # check json ==> "content-type":"application/json"
+    if data != [] and json != []:
+        notif.conflict()
+    else:
+        jsonFile.checkJsonArgu(arguList.get("json"))
+
+    ### find all timeout sections used in the request
     timeout = []
 
     indices = [i for i, a in enumerate(allArguments) if (a == "--timeout")]

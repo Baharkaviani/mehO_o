@@ -14,6 +14,7 @@ import timeout as timeoutFile
 import header as headerFile
 import query as queryFile
 import data as dataFile
+import myJson as jsonFile
 
 def selectedMethod():
     """
@@ -31,6 +32,7 @@ def selectedMethod():
             "POST": requests.post(argu.URL,
                                 headers = headerFile.HEADER,
                                 json    = dataFile.DATA,
+                                data    = jsonFile.JSON,
                                 timeout = timeoutFile.TIMEOUT),
             "PATCH": requests.patch(argu.URL,
                                 headers = headerFile.HEADER,

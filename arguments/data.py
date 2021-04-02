@@ -36,7 +36,7 @@ def ifReplaceable():
     check the data witch has the higher priority
     then set the data to "content-type" header with "application/x-www-form-urlencoded" value
     """
-    if headerFile.HEADER.get("content-type") == None:
+    if "content-type" in headerFile.HEADER:
         headerFile.HEADER["content-type"] = "application/x-www-form-urlencoded"
     else:
         notif.warning("priority data")
