@@ -11,14 +11,6 @@ import method as methodFile
 
 # URL parts
 URL = None
-SCHEME = None
-USER = None
-PASS = None
-HOST = None
-PORT = None
-PATH = None
-QUERY = None
-FRAG = None
 
 # dictionary of arguments
 arguList = {}
@@ -43,11 +35,19 @@ def checkURL():
     """
     check whether the first argument is a correct url
     """
-    global URL, SCHEME, USER, PASS, HOST, PORT, PATH, QUERY, FRAG
+    scheme = None
+    user = None
+    password = None
+    host = None
+    port = None
+    path = None
+    urlQuery = None
+    frag = None
+    global URL
 
     # check the scheme
     try:
-        SCHEME, rest = URL.split("://")
+        scheme, rest = URL.split("://")
     except ValueError:
         #print("the protocol of request isn't specified")
         notif.wrongURL()
@@ -55,7 +55,7 @@ def checkURL():
     # check if url has user and pass or not
     try:
         userPass, rest = rest.split('@')
-        USER, PASS = userPass.split(':')
+        user, password = userPass.split(':')
     except ValueError:
         #print("no user pass in url")
         pass
@@ -65,7 +65,7 @@ def checkURL():
         hostPort, rest = rest.split('/')
 
         try:
-            HOST, PORT = hostPort.split(':')
+            host, port = hostPort.split(':')
         except ValueError:
             rest = hostPort + '/' + rest
             #print("no host port in url")
@@ -76,10 +76,10 @@ def checkURL():
 
     # check the path
     try:
-        PATH, rest = rest.split('?')
+        path, rest = rest.split('?')
     except ValueError:
         if rest != "":
-            PATH = rest
+            path = rest
             rest = ""
         else:
             #print("url has no path")
@@ -88,17 +88,17 @@ def checkURL():
 
     # check query and frag sections
     try:
-        QUERY, FRAG = rest.split('#')
+        urlQuery, frag = rest.split('#')
     except ValueError:
         if rest != "":
-            QUERY = rest
+            urlQuery = rest
 
-    print("SCHEME = {}".format(SCHEME))
-    print("USER = {}, PASS = {}".format(USER, PASS))
-    print("HOST = {}, PORT = {}".format(HOST, PORT))
-    print("PATH = {}".format(PATH))
-    print("QUERY = {}".format(QUERY))
-    print("FRAG = {}".format(FRAG))
+    print("SCHEME = {}".format(scheme))
+    print("USER = {}, PASS = {}".format(user, password))
+    print("HOST = {}, PORT = {}".format(host, port))
+    print("PATH = {}".format(path))
+    print("QUERY = {}".format(urlQuery))
+    print("FRAG = {}".format(frag))
 
 def manageArguments(allArguments):
     """
