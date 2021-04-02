@@ -23,15 +23,15 @@ def checkHeaderArgu(headers):
             # h has just one key:value
             hList = h
 
+        # check all header values for each 'headers' member
         for e in hList:
             key, value = e.split(':')
 
             # select the header with a higher priority (the last one)
             if key in HEADER:
-                HEADER[key] = value
                 notif.warning("header")
-            else:
-                HEADER[key] = value
+
+            HEADER[key] = value
 
     # print the headers
     print("HEADERS = {}".format(HEADER))

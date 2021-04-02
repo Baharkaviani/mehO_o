@@ -24,6 +24,10 @@ def send():
     selectedMethod(methodFile.METHOD)
 
 def selectedMethod(method):
+    """
+    choose the correct action depend on method
+    then send the request to the server
+    """
     try:
         switcher = {
             "GET": requests.get(argu.URL,

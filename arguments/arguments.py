@@ -166,4 +166,4 @@ def manageArguments(allArguments):
 
     timeFile.checkTimeoutArgu(arguList.get("timeout"))
 
-    print("arguList = {}".format(arguList))
+    #print("arguList = {}".format(arguList))
