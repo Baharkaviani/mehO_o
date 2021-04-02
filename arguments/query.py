@@ -18,14 +18,14 @@ def checkQueryArgu(queries):
     # collect and merge all queries
     for q in queries:
         try:
-            qList = q.split(',')
+            qList = q.split('&')
         except ValueError:
             # q has just one key:value
             qList = q
 
         # check all queries values for each 'queries' member
         for e in qList:
-            key, value = e.split(':')
+            key, value = e.split('=')
 
             # select the query with a higher priority (the last one)
             if key in QUERY:
