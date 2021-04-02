@@ -23,7 +23,7 @@ def main():
         notif.wrongCommand(command)
 
     # send the request
-    request.send()
+    request.selectedMethod()
 
 
 if __name__ == '__main__':

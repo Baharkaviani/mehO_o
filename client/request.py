@@ -13,22 +13,13 @@ import method as methodFile
 import timeout as timeoutFile
 import header as headerFile
 
-def send():
+def selectedMethod():
     """
     organize and send the request to server
-    """
-
-    # step 1: prepare the message to send
-
-    # step 2: identify the method and send the request
-
-    selectedMethod(methodFile.METHOD)
-
-def selectedMethod(method):
-    """
     choose the correct action depend on method
-    then send the request to the server
     """
+    method = methodFile.METHOD
+
     try:
         switcher = {
             "GET": requests.get(argu.URL,
