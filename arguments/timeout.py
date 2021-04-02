@@ -9,8 +9,12 @@ import notification as notif
 TIMEOUT = None
 
 def checkTimeoutArgu(times):
+    """
+    set and check timeout
+    """
     global TIMEOUT
 
+    # select and set timeout with a higher priority (the last one)
     if len(times) == 0:
         pass
     elif len(times) == 1:
@@ -19,6 +23,7 @@ def checkTimeoutArgu(times):
         notif.warning("timeout")
         TIMEOUT = num(times[len(times) - 1])
 
+    # print the timeout
     print("TIMEOUT = {}".format(TIMEOUT))
 
 def num(s):

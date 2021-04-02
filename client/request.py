@@ -37,7 +37,9 @@ def selectedMethod(method):
             "PUT": requests.put(argu.URL,
                                 timeout=timeoutFile.TIMEOUT)
         }
+
         x = switcher.get(method)
         print(x.text)
+
     except requests.exceptions.Timeout:
         notif.connectionTimeout(argu.URL)
