@@ -3,10 +3,11 @@ Created on Wed Mar 31 12:23:00 2020 (1400/1/11)
 @author: Bahar Kaviani
 """
 
-import timeout as time
 import sys
 sys.path.append("../cmd")
 import notification as notif
+import timeout as timeFile
+import method as methodFile
 
 # URL parts
 URL = None
@@ -114,6 +115,8 @@ def manageArguments(allArguments):
 
     arguList["method"] = methods
 
+    methodFile.checkMethodArgu(arguList.get("method"))
+
     # find all header arguments used in the request
     headers = []
 
@@ -159,6 +162,6 @@ def manageArguments(allArguments):
 
     arguList["timeout"] = timeout
 
-    time.checkTimeoutArgu(arguList.get("timeout"))
+    timeFile.checkTimeoutArgu(arguList.get("timeout"))
 
     print("arguList = {}".format(arguList))

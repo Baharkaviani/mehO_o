@@ -11,8 +11,14 @@ def wrongURL():
     print("The URL is not correct.")
     exit()
 
+def wrongMethod():
+    print("The method is not valid.")
+    exit()
+
 def warning(problem):
     if problem == "timeout":
         print("Warning! the last timeout will be set for your request.")
+    if problem == "method":
+        print("Warning! the last method will be set for your request.")
     else:
         pass
